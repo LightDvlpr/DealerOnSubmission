@@ -9,7 +9,6 @@ public class UserView {
     private Scanner sc = new Scanner(System.in);
     //menu object will be used in order to get the items scanned by our scanner
     private Menu menu;
-
     //Tax rates are created here so that if we decide to change we can just change these variables
     private double imprtTax = 5/100d;
     private double regTax = 10/100d;
@@ -149,15 +148,15 @@ public class UserView {
             //If an item is taxable then it will be put into the taxTotal() method
             //This will return the whole value of the item after it is taxed and multiplied by it's quantity
             if(i.isTaxable()){
-               total = total + taxTotal(i);
+               total += taxTotal(i);
             }
             //If an item is imported then the same will be done via the imprtTaxtotal() method
             else if (i.isImport()){
-                total = total + imprtTaxtotal(i);
+                total += imprtTaxtotal(i);
 
             } else{
                 //otherwise it's a regular item
-                total = total + nontaxTotal(i);
+                total += nontaxTotal(i);
 
             }
 
