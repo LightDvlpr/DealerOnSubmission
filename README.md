@@ -1,4 +1,4 @@
-# DealerOnSubmission
+# DealerOnSubmission -> Sales Tax
 
 In the following project I have created a simulation of Shopping at a Store. 
 The User is able to select from a menu, taken from a text file, or input their own custom Item that they would like to purchase. 
