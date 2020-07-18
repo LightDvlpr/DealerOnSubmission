@@ -16,7 +16,6 @@ public class Controller {
     public void run(){
 
         List<Item> menu = this.menu.displayAllItems();
-        view.display(menu);
         while(true){
             try{
                 int choice = view.menuOptions();
