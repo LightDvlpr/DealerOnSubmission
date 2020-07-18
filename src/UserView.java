@@ -42,34 +42,42 @@ public class UserView {
         double price;
         boolean Tax;
         boolean imprt;
+        String taxOrNot;
+        String imprtOrNot;
+
         //choiceNum gets the last choicenumber that is present on the list
         //Increments it by one so the user doesn't need to check what the last number is
         int choiceNum = menu.getLastItem().getChoiceNumber() + 1;
 
+        //Item name can be anything. No need to set restrictions
         System.out.println("Please enter in the name of your Item.");
         name = sc.nextLine();
 
-        System.out.println("Please enter the price of your Item.");
-        price = Double.parseDouble(sc.nextLine());
-
-        System.out.println("Type Yes if your item belongs in any of the following categories - > Food, Books or Medical Supplies?");
-        System.out.println("Type No otherwise \n");
-        String answer = sc.nextLine();
-
-        if(answer.equalsIgnoreCase("Yes")){
-            Tax = true;
-        }else{
-            Tax = false;
+        //We do want the user to only enter in a double value hence this do / while loop
+        do{
+            System.out.println("Please enter the price of your Item. It's not free! ");
+            price = Double.parseDouble(sc.nextLine());
         }
+        while(price <= 0 );
 
-        System.out.println("Type Yes if your item is imported. Type No if not.");
-        String answer2 = sc.nextLine();
+        //We also want the user to enter in either Yes or No. Nothing else.
+        do{
+            System.out.println("Type Yes if your item belongs in any of the following categories - > Food, Books or Medical Supplies?");
+            System.out.println("Type No otherwise \n");
+            taxOrNot = sc.nextLine();
 
-        if(answer2.equalsIgnoreCase("Yes")){
-            imprt = true;
-        }else{
-            imprt = false;
-        }
+        } while (!taxOrNot.equalsIgnoreCase("Yes") && !taxOrNot.equalsIgnoreCase("No"));
+
+        Tax = taxOrNot.equalsIgnoreCase("Yes");
+
+        //Same for import. No answer besides Yes or No.
+        do{
+            System.out.println("Type Yes if your item is imported. Type No if not.");
+            imprtOrNot = sc.nextLine();
+        }while(!imprtOrNot.equalsIgnoreCase("Yes") && !imprtOrNot.equalsIgnoreCase("No"));
+
+        imprt = imprtOrNot.equalsIgnoreCase("Yes");
+
 
         //custom is our new Item, we assign the parameters that the user gave us
         Item custom = new Item(choiceNum, name, price, Tax, imprt);
@@ -83,7 +91,7 @@ public class UserView {
         list.add(custom);
         //writeToFile will erase what is currently on the text file and add in our new list with the new item
         menu.writeToFile(list);
-        System.out.println("The item has been added to your cart as well as our menu. Thank you!!\n");
+        System.out.println( custom.getName() + " has been added to your cart as well as our menu. Thank you!!\n");
         //We return the item so that we can add it to the user's basket in the Controller class
         return custom;
     }

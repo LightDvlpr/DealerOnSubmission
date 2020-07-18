@@ -6,3 +6,7 @@
 6,Packet of Headache pills,29.93,Nontax,Imprt
 7,Apple,2.34,Nontax,Imprt
 8,Imported Chocolate,32.29,Tax,Imprt
+9,Cherries,3.0,Nontax,nonimprt
+10,Cheese,2.0,Nontax,nonimprt
+11,macarooni,3.0,Tax,nonimprt
+12,Berries,3.99,Tax,nonimprt

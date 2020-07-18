@@ -85,7 +85,9 @@ public class Item extends Product {
         return answer;
     }
 
-    public void setTaxable(boolean taxable) { this.Taxable = taxable; }
+    public void setTaxable(boolean taxable) {
+
+        this.Taxable = taxable; }
 
     //If the item is imported
     public boolean isImport(){
@@ -103,6 +105,8 @@ public class Item extends Product {
             setName("Imported " + getName());
         }
     }
+
+
 
     //This will be added to the text file to classify it as an imported item
     public String ImprtState(){
