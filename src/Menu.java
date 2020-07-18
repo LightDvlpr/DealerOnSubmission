@@ -23,6 +23,8 @@ public interface Menu {
      //Grabs last item off the menu. I made this method to make adding a new item to the menu easier for the user
      Item getLastItem();
 
+     int getMenuSize();
+
 
 
 }

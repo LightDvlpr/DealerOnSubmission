@@ -1,8 +1,8 @@
-1, Jeans, 12.49,Tax,nonimprt
-2, Music CD, 14.99,Tax,nonimprt
-3, laptop, 0.85,Tax,nonimprt
-4, Imported box of Chocolates, 45.39,nonTax,imprt
-5, Imported bottle of Perfume, 38.93,tax,imprt
-6, Packet of Headache pills, 29.93,Nontax,imprt
-7, Apple, 2.34,Nontax,imprt
-
+1,Jeans,12.49,Tax,nonimprt
+2,Music CD,14.99,Tax,nonimprt
+3,laptop,0.85,Tax,nonimprt
+4,Imported box of Chocolates,45.39,Nontax,Imprt
+5,Imported bottle of Perfume,38.93,Tax,Imprt
+6,Packet of Headache pills,29.93,Nontax,Imprt
+7,Apple,2.34,Nontax,Imprt
+8,Imported Chocolate,32.29,Tax,Imprt

@@ -88,13 +88,15 @@ public class UserView {
         return custom;
     }
 
-    //This method will allow the user to pic the item via the assigned choice number
-    public int getItemNumberChoice(){
+    //This method will allow the user to pick the item via the assigned choice number
+    public int getItemNumberChoice(int min, int max){
         int choice;
 
-        System.out.println("Please enter your Item's Choice number: ");
-        choice = Integer.parseInt(sc.nextLine());
-
+        do {
+            System.out.println("Please enter your Item's Choice number: ");
+            choice = Integer.parseInt(sc.nextLine());
+        }
+        while(choice < min || choice > max);
         return choice;
     }
 

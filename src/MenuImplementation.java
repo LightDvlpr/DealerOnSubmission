@@ -124,4 +124,9 @@ public class MenuImplementation implements Menu {
         return menu.get(menu.size()-1);
 
     }
+
+    @Override
+    public int getMenuSize() {
+        return this.currentMenu.size();
+    }
 }

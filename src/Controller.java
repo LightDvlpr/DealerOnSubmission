@@ -34,7 +34,7 @@ public class Controller {
                         //the user will be shown the current menu
                         view.display(menu);
                         //their choice will then be assigned to an int variable called item
-                        int item = view.getItemNumberChoice();
+                        int item = view.getItemNumberChoice(menu.get(0).getChoiceNumber(),menu.size());
 
                         //if the basket contains the item they selected already then it won't be added
                         //instead the quantity will be incremented
@@ -48,6 +48,7 @@ public class Controller {
                             Item temp = basket.getItemFromBasket(item);
                             temp.setQuantity(temp.getQuantity() + 1);
                         }
+                        System.out.println( basket.getItemFromBasket(item).getName() + " added to your cart!\n");
                         break;
                     //case 2 is chosen if the user would like to check out whatever items they have
                     case 2:
