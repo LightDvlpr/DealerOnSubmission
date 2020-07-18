@@ -171,7 +171,7 @@ public class UserView {
         result2 = result2.setScale(2, RoundingMode.HALF_UP);
 
         System.out.println("Sales Taxes: " + result2);
-        System.out.println(" Your total cost is:  " + result);
+        System.out.println("Your total cost is:  " + result);
 
     }
 
