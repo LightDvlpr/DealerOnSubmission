@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class MenuImplementation implements Menu {
 
-    private static String FILENAME = "DealerOnSubmission/Products.txt";
+//    private static String FILENAME = "Products.txt";
+    File textfile;
     private static final String DELIMITER = ",";
     private List<Item> menu = new ArrayList<Item>();
     private List<Item> currentMenu = new ArrayList<>();
 
-    MenuImplementation(){
-
+    MenuImplementation(File text){
+        this.textfile = text;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class MenuImplementation implements Menu {
 
         Scanner sc = null;
         try{
-            sc = new Scanner(new File(FILENAME));
+            sc = new Scanner(textfile);
         } catch (FileNotFoundException ex){
             System.out.println("File not found");
 
@@ -67,7 +68,7 @@ public class MenuImplementation implements Menu {
     public void writeToFile(List<Item>newList) {
         PrintWriter pw = null;
         try {
-            pw = new PrintWriter(new FileWriter(new File(FILENAME), false));
+            pw = new PrintWriter(new FileWriter(textfile, false));
         } catch (Exception e){
             System.out.println("Can't write to file.");
         }

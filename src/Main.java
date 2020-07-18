@@ -1,9 +1,11 @@
+import java.io.File;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args ) {
 
-
-       Menu menu = new MenuImplementation();
+       File text = new File(args[0]);
+       Menu menu = new MenuImplementation(text);
        Basket bought = new Basket();
        UserView user = new UserView(menu);
        Controller controller = new Controller(user, menu, bought);
