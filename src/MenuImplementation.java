@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuImplementation implements Menu {
 
-    private static String FILENAME = "products.txt";
+    private static String FILENAME = "Products.txt";
     private static final String DELIMITER = ",";
     private List<Item> menu = new ArrayList<Item>();
     private List<Item> currentMenu = new ArrayList<>();
