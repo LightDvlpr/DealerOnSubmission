@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuImplementation implements Menu {
 
-    private static String FILENAME = "Products.txt";
+    private static String FILENAME = "DealerOnSubmission/Products.txt";
     private static final String DELIMITER = ",";
     private List<Item> menu = new ArrayList<Item>();
     private List<Item> currentMenu = new ArrayList<>();
@@ -35,6 +35,7 @@ public class MenuImplementation implements Menu {
             sc = new Scanner(new File(FILENAME));
         } catch (FileNotFoundException ex){
             System.out.println("File not found");
+
         }
         while(sc.hasNextLine()){
 
