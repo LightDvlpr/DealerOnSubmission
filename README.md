@@ -19,4 +19,31 @@ The Controller class is the heart of the code. It's execution is what allows the
 The Userview class is built for all actions that the user may need including, but not limited to, displaying the recipet, calculations etc.  
 
 
-#How to Run 
+# How to Run 
+
+In order to run the code please copy the SSH link, perform a git clone on your local machine.
+
+Once you've done so simple enter into the src folder and type in the following command "java Main Products.txt"
+
+The program will then begin.
+
+The user has the privillege to enter in a new item into the Products.txt file 
+
+(Please use the proper format)
+You will need the following parameters if you wish to enter in a value manullay 
+
+choiceNumber - a number used to make selecting an item easier.
+
+nameOfItem - the name of the item
+
+cost - price of the item
+
+taxOrNot - simply write Tax if taxable, nontax if not
+
+importedOrNot - simply write imprt if imported, nonimprt if not
+
+Ex of how to input manually into the textfile -> choiceNumber,nameOfItem,cost,taxOrNot,importedOrNot
+be sure to separate items only using commas. 
+
+If the user does not wish to enter it into the text file then they may choose option 3 prompted by the code and enter it in more easily. 
+
