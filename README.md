@@ -30,12 +30,16 @@ The program will then begin.
 The user has the privillege to enter in a new item into the Products.txt file 
 
 (Please use the proper format)
-You will need the following parameters if you wish to enter in a value manullay  \n
+You will need the following parameters if you wish to enter in a value manullay 
 
 choiceNumber - a number used to make selecting an item easier.
+
 nameOfItem - the name of the item
+
 cost - price of the item
+
 taxOrNot - simply write Tax if taxable, nontax if not
+
 importedOrNot - simply write imprt if imported, nonimprt if not
 
 Ex of how to input manually into the textfile -> choiceNumber,nameOfItem,cost,taxOrNot,importedOrNot
