@@ -6,6 +6,8 @@ public class Item extends Product {
     private int Quantity = 0;
     private boolean imported;
 
+    //This is our item class. The Item object keeps the whole application organized
+    //We are able to use this object to be able to call different options via the assigned parameters
 
     Item(){
 
@@ -19,6 +21,8 @@ public class Item extends Product {
         this.imported = imprt;
     }
 
+    //I assigned each option a choice number. This made calling the Item easier for me and for the user
+    //Instead of writing the whole name you just need to input the item's assigned number and you're good to go
     @Override
     public int getChoiceNumber() {
         return choiceNumber;
@@ -30,6 +34,7 @@ public class Item extends Product {
 
     }
 
+    //This method allows us to print the name of each item
     @Override
     public String getName() {
         return Name;
@@ -41,6 +46,7 @@ public class Item extends Product {
 
     }
 
+    //grab the price of each item
     @Override
     public Double getPrice() {
         return Price;
@@ -51,6 +57,7 @@ public class Item extends Product {
         Price = newPrice;
     }
 
+    //How much of each item is in the cart
     @Override
     public int getQuantity() {
         return Quantity;
@@ -61,10 +68,12 @@ public class Item extends Product {
         Quantity = newQuantity;
     }
 
+    //IF it is taxable or not
     public boolean isTaxable() {
         return Taxable;
     }
 
+    //If it is taxable then we add the Tax String to the text file
     public String TaxState(){
         String answer;
         if(this.isTaxable()){
@@ -78,6 +87,7 @@ public class Item extends Product {
 
     public void setTaxable(boolean taxable) { this.Taxable = taxable; }
 
+    //If the item is imported
     public boolean isImport(){
         return imported;
     }
@@ -86,6 +96,7 @@ public class Item extends Product {
         this.imported = imported;
     }
 
+    //If the item is imported then we add "Imported " to the beginning of the name
     public void fixImprt(){
 
         if(this.isImport()){
@@ -93,6 +104,7 @@ public class Item extends Product {
         }
     }
 
+    //This will be added to the text file to classify it as an imported item
     public String ImprtState(){
         String answer;
         if(this.isImport()){
