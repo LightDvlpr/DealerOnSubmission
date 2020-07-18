@@ -27,7 +27,6 @@ public class MenuImplementation implements Menu {
         return currentMenu;
     }
 
-
     @Override
     public void readFile(){
 
