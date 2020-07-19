@@ -31,10 +31,9 @@ After the project is compiled, enter in the following command "java Main Product
 The program will then begin.
 
 # IDE
-In order to run in the IDE you have to make sure the text file is in the ShoppingCartSimulaiton folder, not in the src folder.
 
-After you place the text file in the right location then you must update File text = new File(args[0]); in Main.java to File text = new File("Products.txt");
-
+In order to run the application on an IDE you will need to uncomment line 8 and comment line 7 in Main.java
+After you do that just click play on Main.java.
 
 # Additional info
 
