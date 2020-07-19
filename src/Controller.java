@@ -12,7 +12,7 @@ public class Controller {
         this.regularBasket = regularBasket;
 
     }
-
+    //This will execute the program by beginning to interact with the user
     void run(){
         List<Item> menu = this.regularMenu.returnAllMenuItems();
         while(true){
@@ -20,7 +20,7 @@ public class Controller {
 
             switch(choice) {
                 case 1:
-                    view.display(menu);
+                    view.displayMenu(menu);
                     int item = (int) Double.parseDouble(view.getItemNumberChoice(menu.size()));
                     int quantity = (int) Double.parseDouble(view.getItemQuantity());
                     regularBasket.adjustBasketState(item, quantity, this.regularBasket, menu, this.regularMenu);

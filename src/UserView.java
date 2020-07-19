@@ -14,6 +14,7 @@ class UserView {
         this.regularMenu = regularMenu;
     }
 
+    //Shows the user the menu options
     String menuOptions(){
         System.out.print("1.) Purchase an Item.\n");
         System.out.print("2.) Complete transaction\n");
@@ -23,6 +24,7 @@ class UserView {
         return readUserChoice();
     }
 
+    //If a user would like to enter in a custom item, this method will be called
     Item addCustomItemToCart(){
         String name;
         double price;
@@ -73,6 +75,7 @@ class UserView {
         return custom;
     }
 
+    //When a user chooses an item of the menu, this method wll be called
     String getItemNumberChoice(int max){
         String choice;
         do {
@@ -83,6 +86,7 @@ class UserView {
         return choice;
     }
 
+    //This method will prompt the user to enter a quantity for the item they chose
     String getItemQuantity(){
         String quantity;
 
@@ -94,6 +98,7 @@ class UserView {
         return quantity;
     }
 
+    //This method allows us to read what the user input
     private String readUserChoice(){
         String value;
         do {
@@ -104,7 +109,8 @@ class UserView {
         return value;
     }
 
-    void display(List<Item> menu){
+    //This method will display the current menu for the user
+    void displayMenu(List<Item> menu){
         System.out.println("");
         for(Item i: menu){
             System.out.println(i.getChoiceNumber() + " " + i.getName() + " " + i.getPrice());
@@ -114,6 +120,7 @@ class UserView {
         System.out.println();
     }
 
+    //This method will be called when the user decides to check out. It will display the receipt.
     void displayReceipt(List<Item> cart){
         System.out.println("Printing your receipt\n");
         double total = 0.0;
@@ -137,6 +144,7 @@ class UserView {
         System.out.println("Your total cost is:  " + result);
     }
 
+    //This method calculates the sales tax
     private double SalesTax(Item i){
         double tax = 0.0;
 
@@ -145,12 +153,14 @@ class UserView {
         return tax;
     }
 
+    //This method calculates the price of an imported item
     private double imprtTaxtotal(Item i){
         double price = i.getPrice();
         double priceAfterTax = i.getPrice() + i.getPrice() * imprtTax;
         return Calculate(i, price, priceAfterTax);
     }
 
+    //This method calculates general pricing
     private double Calculate(Item i, double price, double priceAfterTax) {
         double total;
         int quantity = i.getQuantity();
@@ -170,6 +180,7 @@ class UserView {
         return total;
     }
 
+    //Calculates the price of a taxable item
     private double taxTotal(Item i){
         double priceAfterTax = i.getPrice() + i.getPrice() * regTax;
         double price = i.getPrice();
@@ -177,6 +188,7 @@ class UserView {
 
     }
 
+    //Calculates the price of a general item
     private double nontaxTotal(Item i){
         double total;
         double price = i.getPrice();

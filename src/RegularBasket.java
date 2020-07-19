@@ -30,7 +30,7 @@ public class RegularBasket implements BasketType{
 
         if (regularBasket.contains(i)) {
             addOne = regularBasket.getItemFromBasket(i);
-            addOne.setQuantity(quantity);
+            addOne.setQuantity(addOne.getQuantity() + quantity);
         }
         else {
             addOne = menu.getItemFromMenu(i,MenuAvail);

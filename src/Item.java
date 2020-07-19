@@ -6,6 +6,8 @@ public class Item extends Product {
     private int Quantity = 0;
     private boolean imported;
 
+    //The Item object is what maintains the menu as well as the User's basket's organization.
+    //I've given each item a specific choice number so that the user only needs to pick a number
     Item(){
 
     }
