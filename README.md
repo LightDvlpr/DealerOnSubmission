@@ -23,7 +23,9 @@ The Userview class is built for all actions that the user may need including, bu
 
 In order to run the code please copy the SSH link, perform a git clone on your local machine.
 
-Once you've done so simple enter into the src folder and type in the following command "java Main Products.txt"
+Once clone, enter into src folder and type "javac Main.java"
+
+After the project is compiled, enter in the following command "java Main Products.txt"
 
 The program will then begin.
 
