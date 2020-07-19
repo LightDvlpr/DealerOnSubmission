@@ -15,4 +15,12 @@
 15,Juice,3.0,Tax,nonimprt
 16,Imported ,4.0,Tax,Imprt
 17,Cranberries,3.0,Tax,nonimprt
-18,GreenLeaves,2.394,Tax,nonimprt
+18,GreenLeaves,2.39,Tax,nonimprt
+19,Sandwich,3.93,Tax,nonimprt
+20,Imported peanuts,2.93,Tax,Imprt
+21,Imported Shoes,3.92,Nontax,Imprt
+22,Imported Beans,3.92,Nontax,Imprt
+23,Imported Grapes,32.92,Nontax,Imprt
+24,Imported Corn,3.92,Nontax,Imprt
+25,Imported bananas,2.99,Nontax,Imprt
+26,Imported crab,3.29,Tax,Imprt

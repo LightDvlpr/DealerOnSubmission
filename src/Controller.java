@@ -12,6 +12,7 @@ public class Controller {
         this.regularBasket = regularBasket;
 
     }
+
     //This will execute the program by beginning to interact with the user
     void run(){
         List<Item> menu = this.regularMenu.returnAllMenuItems();
@@ -26,7 +27,7 @@ public class Controller {
                     regularBasket.adjustBasketState(item, quantity, this.regularBasket, menu, this.regularMenu);
                     break;
                 case 2:
-                    view.displayReceipt(regularBasket.returnAllBasketItems());
+                    view.displayReceipt(regularBasket);
                     System.exit(0);
                     break;
                 case 3:

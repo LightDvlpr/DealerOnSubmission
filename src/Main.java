@@ -7,7 +7,7 @@ public class Main {
        File text = new File(args[0]);
        RegularMenu regularMenu = new RegularMenu(text);
        RegularBasket Cart = new RegularBasket();
-       UserView user = new UserView(regularMenu);
+       UserView user = new UserView(regularMenu, Cart);
        Controller controller = new Controller(user, regularMenu, Cart);
 
        //Lets go shopping.

@@ -6,12 +6,12 @@ import java.util.Scanner;
 class UserView {
 
     private Scanner sc = new Scanner(System.in);
-    private RegularMenu regularMenu;
-    private double imprtTax = 5/100d;
-    private double regTax = 10/100d;
+    private RegularMenu Menu;
+    private RegularBasket basket;
 
-    UserView(RegularMenu regularMenu){
-        this.regularMenu = regularMenu;
+    UserView(RegularMenu Menu, RegularBasket basket){
+        this.Menu = Menu;
+        this.basket = basket;
     }
 
     //Shows the user the menu options
@@ -32,8 +32,9 @@ class UserView {
         boolean imprt;
         String taxOrNot;
         String imprtOrNot;
+        int Quantity;
 
-        int choiceNum = regularMenu.getLastItem().getChoiceNumber() + 1;
+        int choiceNum = Menu.getLastItem().getChoiceNumber() + 1;
 
         do{
             System.out.println("Please enter in the name of your Item.");
@@ -63,15 +64,16 @@ class UserView {
 
         imprt = imprtOrNot.equalsIgnoreCase("Yes");
 
-        Item custom = new Item(choiceNum, name, price, Tax, imprt);
+        Quantity = (int) Double.parseDouble(this.getItemQuantity());
+        Item custom = new Item(choiceNum, name, price, Tax, imprt, Quantity);
 
         custom.fixImprt();
 
-        regularMenu.addItemToMenu(custom);
+        Menu.addItemToMenu(custom);
 
-        regularMenu.writeToFile(regularMenu.returnAllMenuItems());
+        Menu.writeToFile(Menu.returnAllMenuItems());
 
-        System.out.println( custom.getName() + " has been added to your cart as well as our menu. Thank you!!\n");
+        System.out.println(custom.getQuantity() + " " + custom.getName() + " is in your cart and now our menu. Thank you!!\n");
         return custom;
     }
 
@@ -99,7 +101,7 @@ class UserView {
     }
 
     //This method allows us to read what the user input
-    private String readUserChoice(){
+    String readUserChoice(){
         String value;
         do {
             System.out.print("Please Select your option's number :-> ");
@@ -121,17 +123,25 @@ class UserView {
     }
 
     //This method will be called when the user decides to check out. It will display the receipt.
-    void displayReceipt(List<Item> cart){
+    void displayReceipt(RegularBasket basket){
+        List<Item> cart = basket.returnAllBasketItems();
+
         System.out.println("Printing your receipt\n");
         double total = 0.0;
         double totalSalesTax = 0.0;
 
         for(Item i: cart){
-            totalSalesTax += SalesTax(i);
+            totalSalesTax += basket.SalesTax(i);
 
-            if(i.isTaxable()){ total += taxTotal(i); }
-            else if (i.isImport()){ total += imprtTaxtotal(i); }
-            else{ total += nontaxTotal(i); }
+            if(i.isTaxable()){
+                total += basket.taxTotal(i);
+            }
+            else if(i.isImport()){
+                total += basket.imprtTaxtotal(i);
+            }
+            else{
+                total += basket.nontaxTotal(i);
+            }
         }
 
         BigDecimal result =  new BigDecimal(Math.ceil(total * 20) / 20);
@@ -142,70 +152,5 @@ class UserView {
 
         System.out.println("Sales Taxes: " + result2);
         System.out.println("Your total cost is:  " + result);
-    }
-
-    //This method calculates the sales tax
-    private double SalesTax(Item i){
-        double tax = 0.0;
-
-        if(i.isImport()){ tax = (i.getPrice() * i.getQuantity()) * imprtTax; }
-        else if(i.isTaxable()){ tax = (i.getPrice() * i.getQuantity()) * regTax; }
-        return tax;
-    }
-
-    //This method calculates the price of an imported item
-    private double imprtTaxtotal(Item i){
-        double price = i.getPrice();
-        double priceAfterTax = i.getPrice() + i.getPrice() * imprtTax;
-        return Calculate(i, price, priceAfterTax);
-    }
-
-    //This method calculates general pricing
-    private double Calculate(Item i, double price, double priceAfterTax) {
-        double total;
-        int quantity = i.getQuantity();
-        double totalPriceForItem = priceAfterTax * quantity;
-
-        BigDecimal tPFI =  new BigDecimal(Math.ceil(totalPriceForItem * 20) / 20);
-        tPFI = tPFI.setScale(2, RoundingMode.HALF_UP);
-
-        if(quantity > 1){
-            total = totalPriceForItem;
-            System.out.println(i.getName() + ": " + tPFI + " (" + quantity + " @ " + price + " )");
-        }
-        else{
-            total = totalPriceForItem;
-            System.out.println(i.getName() + ": " + i.getPrice());
-        }
-        return total;
-    }
-
-    //Calculates the price of a taxable item
-    private double taxTotal(Item i){
-        double priceAfterTax = i.getPrice() + i.getPrice() * regTax;
-        double price = i.getPrice();
-        return Calculate(i, price, priceAfterTax);
-
-    }
-
-    //Calculates the price of a general item
-    private double nontaxTotal(Item i){
-        double total;
-        double price = i.getPrice();
-        int quantity = i.getQuantity();
-        double Totalprice = i.getPrice() * quantity;
-
-        BigDecimal tP =  new BigDecimal(Math.ceil(Totalprice * 20) / 20);
-        tP = tP.setScale(2, RoundingMode.HALF_UP);
-
-        if(i.getQuantity() > 1){
-            total = Totalprice;
-            System.out.println(i.getName() + ": " + tP + " (" + quantity + " @ " + price + " )");
-        }
-        else{
-            total = Totalprice;
-            System.out.println(i.getName() + ": " + price);
-        }
-        return total;
     }
 }

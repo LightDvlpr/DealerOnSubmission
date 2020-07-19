@@ -12,12 +12,13 @@ public class Item extends Product {
 
     }
 
-    public Item(int choiceNum, String name, double price, boolean tax, boolean imprt) {
+    public Item(int choiceNum, String name, double price, boolean tax, boolean imprt, int Quantity) {
         this.choiceNumber = choiceNum;
         this.Name = name;
         this.Price = price;
         this.Taxable = tax;
         this.imported = imprt;
+        this.Quantity = Quantity;
     }
 
     @Override

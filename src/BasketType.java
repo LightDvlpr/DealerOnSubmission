@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public interface BasketType {
@@ -15,4 +17,20 @@ public interface BasketType {
 
     //This method will add or adjust the quantity of an item in the user's basket
     void adjustBasketState(int i, int quantity, RegularBasket regularBasket, List<Item> MenuAvail, RegularMenu object );
+
+    //This method calculates the sales tax
+    double SalesTax(Item i);
+
+    //This method calculates the price of an imported item
+    double imprtTaxtotal(Item i);
+
+    //This method calculates general pricing
+    double Calculate(Item i, double price, double priceAfterTax);
+
+    //Calculates the price of a taxable item
+    double taxTotal(Item i);
+
+    //Calculates the price of a general item
+    double nontaxTotal(Item i);
+
 }

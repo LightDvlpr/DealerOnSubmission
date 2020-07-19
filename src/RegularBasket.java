@@ -1,9 +1,13 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegularBasket implements BasketType{
 
     private List<Item> bask = new ArrayList<Item>();
+    private double imprtTax = 5/100d;
+    private double regTax = 10/100d;
 
     RegularBasket(){
 
@@ -37,13 +41,11 @@ public class RegularBasket implements BasketType{
             addOne.setQuantity(quantity);
             bask.add(addOne);
         }
-        System.out.println(addOne.getQuantity() + " " + addOne.getName() + " added to your cart!\n");
+        System.out.println("You now have " + addOne.getQuantity() + " " + addOne.getName() + " in your cart!\n");
     }
 
     @Override
     public void addItemToBasket(Item item){
-        item.setQuantity(item.getQuantity() + 1);
-
         bask.add(item);
     }
 
@@ -56,4 +58,56 @@ public class RegularBasket implements BasketType{
         }
         return answer;
     }
+
+    @Override
+    public double SalesTax(Item i) {
+        double tax = 0.0;
+
+        if(i.isImport()){ tax = (i.getPrice() * i.getQuantity()) * imprtTax; }
+        else if(i.isTaxable()){ tax = (i.getPrice() * i.getQuantity()) * regTax; }
+        return tax;
+    }
+
+    @Override
+    public double imprtTaxtotal(Item i) {
+        double price = i.getPrice();
+        double priceAfterTax = i.getPrice() + i.getPrice() * imprtTax;
+        return Calculate(i, price, priceAfterTax);
+    }
+
+    @Override
+    public double Calculate(Item i, double price, double priceAfterTax) {
+        double total;
+        int quantity = i.getQuantity();
+        double totalPriceForItem = priceAfterTax * quantity;
+
+        BigDecimal tPFI =  new BigDecimal(Math.ceil(totalPriceForItem * 20) / 20);
+        tPFI = tPFI.setScale(2, RoundingMode.HALF_UP);
+
+        if(quantity > 1){
+            total = totalPriceForItem;
+            System.out.println(i.getName() + ": " + tPFI + " (" + quantity + " @ " + price + " )");
+        }
+        else{
+            total = totalPriceForItem;
+            System.out.println(i.getName() + ": " + i.getPrice());
+        }
+        return total;
+    }
+
+    @Override
+    public double taxTotal(Item i) {
+        double priceAfterTax = i.getPrice() + i.getPrice() * regTax;
+        double price = i.getPrice();
+        return Calculate(i, price, priceAfterTax);
+    }
+
+    @Override
+    public double nontaxTotal(Item i) {
+        double priceAfterTax = i.getPrice() * 1;
+        double price = i.getPrice();
+        return Calculate(i, price, priceAfterTax);
+    }
+
+
 }
