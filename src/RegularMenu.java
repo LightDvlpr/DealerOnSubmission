@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ public class RegularMenu implements MenuType {
     private File textfile;
     private static final String DELIMITER = ",";
     private List<Item> menu;
+    DecimalFormat df2 = new DecimalFormat("#.##");
 
     RegularMenu(File text){
         this.textfile = text;
@@ -49,7 +51,7 @@ public class RegularMenu implements MenuType {
 
                 i.setChoiceNumber(Integer.parseInt(parts[0]));
                 i.setName(parts[1]);
-                i.setPrice((Double.parseDouble(parts[2])));
+                i.setPrice(Double.parseDouble(df2.format(Double.parseDouble(parts[2]))));
 
                 if(parts[3].equalsIgnoreCase("Tax")){ i.setTaxable(true); }
                 else{ i.setTaxable(false); }

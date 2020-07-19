@@ -14,7 +14,7 @@ class UserView {
         this.regularMenu = regularMenu;
     }
 
-    int menuOptions(){
+    String menuOptions(){
         System.out.print("1.) Purchase an Item.\n");
         System.out.print("2.) Complete transaction\n");
         System.out.print("3.) Enter in a specific product.\n");
@@ -73,34 +73,34 @@ class UserView {
         return custom;
     }
 
-    int getItemNumberChoice(int max){
-        int choice;
+    String getItemNumberChoice(int max){
+        String choice;
         do {
             System.out.println("Please enter your Item's Choice number: ");
-            choice = Integer.parseInt(sc.nextLine());
+            choice = sc.nextLine();
         }
-        while(choice < 1 || choice > max);
+        while(choice.trim().matches("[a-zA-Z]+") || choice.isBlank() || (int) Double.parseDouble(choice) < 1 || (int) Double.parseDouble(choice) > max);
         return choice;
     }
 
-    int getItemQuantity(){
-        int quantity;
+    String getItemQuantity(){
+        String quantity;
 
         do{
             System.out.println("How much of this item would you like? Please enter a number: ");
-            quantity = Integer.parseInt(sc.nextLine());
+            quantity = sc.nextLine();
         }
-        while(quantity <= 0);
+        while(quantity.trim().matches("[a-zA-Z]+") || quantity.isBlank() || (int) Double.parseDouble(quantity) <=0);
         return quantity;
     }
 
-    private int readUserChoice(){
-        int value;
+    private String readUserChoice(){
+        String value;
         do {
             System.out.print("Please Select your option's number :-> ");
-            value = Integer.parseInt(sc.nextLine());
+            value = sc.nextLine();
         }
-        while(value < 1 || value > 4);
+        while(value.trim().matches("[a-zA-Z]+") || value.isBlank() || (int) Double.parseDouble(value) > 4 || (int) Double.parseDouble(value) < 1);
         return value;
     }
 

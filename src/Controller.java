@@ -16,13 +16,13 @@ public class Controller {
     void run(){
         List<Item> menu = this.regularMenu.returnAllMenuItems();
         while(true){
-            int choice = view.menuOptions();
+            int choice = (int) Double.parseDouble(view.menuOptions());
 
             switch(choice) {
                 case 1:
                     view.display(menu);
-                    int item = view.getItemNumberChoice(menu.size());
-                    int quantity = view.getItemQuantity();
+                    int item = (int) Double.parseDouble(view.getItemNumberChoice(menu.size()));
+                    int quantity = (int) Double.parseDouble(view.getItemQuantity());
                     regularBasket.adjustBasketState(item, quantity, this.regularBasket, menu, this.regularMenu);
                     break;
                 case 2:
