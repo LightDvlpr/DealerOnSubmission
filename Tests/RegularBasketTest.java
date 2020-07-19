@@ -8,6 +8,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 class RegularBasketTest {
+
     File text = new File("Products.txt");
     RegularMenu menu = new RegularMenu(text);
     List<Item> menuavail = menu.returnAllMenuItems();
@@ -20,7 +21,6 @@ class RegularBasketTest {
 
     @Test
     void returnAllBasketItems() {
-
         basket.addItemToBasket(one);
         basket.addItemToBasket(two);
         basket.addItemToBasket(three);
@@ -28,16 +28,12 @@ class RegularBasketTest {
 
         List<Item> items = basket.returnAllBasketItems();
         assertEquals(4, items.size());
-
-
     }
 
     @Test
     void contains() {
         basket.addItemToBasket(two);
-
         assertEquals(true,basket.contains(27));
-
     }
 
     @Test
@@ -51,17 +47,13 @@ class RegularBasketTest {
         basket.adjustBasketState(26,4,basket,menuavail,menu);
 
         assertEquals(4,basket.getItemFromBasket(26).getQuantity());
-
-
     }
 
     @Test
     void addItemToBasket() {
 
         basket.addItemToBasket(two);
-
         assertEquals(27,basket.getItemFromBasket(27).getChoiceNumber());
-
     }
 
     @Test
@@ -74,6 +66,8 @@ class RegularBasketTest {
 
     @Test
     void salesTax() {
+
+        //Test an imported Item
         Double tax1 = basket.SalesTax(one);
         BigDecimal expectedTax1 = new BigDecimal(.15);
         expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
@@ -83,6 +77,7 @@ class RegularBasketTest {
 
         assertEquals(expectedTax1, result1);
 
+        //Test a Taxable item
         Double tax2 = basket.SalesTax(two);
         BigDecimal expectedTax2 = new BigDecimal(2.25);
         expectedTax2 = expectedTax2.setScale(2, RoundingMode.HALF_UP);
@@ -92,6 +87,7 @@ class RegularBasketTest {
 
         assertEquals(expectedTax2, result2);
 
+        //Test a nonTaxable Item
         Double tax3 = basket.SalesTax(four);
         BigDecimal expectedTax3 = new BigDecimal(0);
         expectedTax3 = expectedTax3.setScale(2, RoundingMode.HALF_UP);
@@ -100,12 +96,6 @@ class RegularBasketTest {
         result3 = result3.setScale(2, RoundingMode.HALF_UP);
 
         assertEquals(expectedTax3, result3);
-
-
-
-
-
-
     }
 
     @Test
@@ -151,7 +141,7 @@ class RegularBasketTest {
 
     @Test
     void nontaxTotal() {
-        Double tax1 = basket.nontaxTotal(four);
+        double tax1 = basket.nontaxTotal(four);
 
         BigDecimal expectedTax1 = new BigDecimal(8.35);
         expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
