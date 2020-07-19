@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.awt.desktop.AppForegroundListener;
 import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
