@@ -11,3 +11,7 @@
 11,macarooni,3.0,Tax,nonimprt
 12,Berries,3.99,Tax,nonimprt
 13,naples,3.0,Nontax,nonimprt
+14,Imported greenbeans,2.0,Tax,Imprt
+15,Juice,3.0,Tax,nonimprt
+16,Imported ,4.0,Tax,Imprt
+17,Cranberries,3.0,Tax,nonimprt

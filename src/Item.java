@@ -29,24 +29,16 @@ public class Item extends Product {
     }
 
     @Override
-    public void setChoiceNumber(int choiceNumber) {
-        this.choiceNumber = choiceNumber;
+    public void setChoiceNumber(int choiceNumber) { this.choiceNumber = choiceNumber; }
 
-    }
-
-    //This method allows us to print the name of each item
     @Override
     public String getName() {
         return Name;
     }
 
     @Override
-    public void setName(String newName) {
-        Name = newName;
+    public void setName(String newName) { Name = newName; }
 
-    }
-
-    //grab the price of each item
     @Override
     public Double getPrice() {
         return Price;
@@ -57,7 +49,6 @@ public class Item extends Product {
         Price = newPrice;
     }
 
-    //How much of each item is in the cart
     @Override
     public int getQuantity() {
         return Quantity;
@@ -68,57 +59,36 @@ public class Item extends Product {
         Quantity = newQuantity;
     }
 
-    //IF it is taxable or not
-    public boolean isTaxable() {
+    boolean isTaxable() {
         return Taxable;
     }
 
-    //If it is taxable then we add the Tax String to the text file
-    public String TaxState(){
-        String answer;
-        if(this.isTaxable()){
-            answer = "Tax";
-        }
-        else{
-            answer = "Nontax";
-        }
-        return answer;
-    }
+    void setTaxable(boolean taxable) { this.Taxable = taxable; }
 
-    public void setTaxable(boolean taxable) {
-
-        this.Taxable = taxable; }
-
-    //If the item is imported
-    public boolean isImport(){
+    boolean isImport(){
         return imported;
     }
 
-    public void setImported(boolean imported) {
+    void setImported(boolean imported) {
         this.imported = imported;
     }
 
-    //If the item is imported then we add "Imported " to the beginning of the name
-    public void fixImprt(){
-
-        if(this.isImport()){
-            setName("Imported " + getName());
-        }
-    }
-
-
-
-    //This will be added to the text file to classify it as an imported item
-    public String ImprtState(){
+    String TaxState(){
         String answer;
-        if(this.isImport()){
-            answer = "Imprt";
-        }
-        else{
-            answer = "nonimprt";
-        }
+        if(this.isTaxable()){ answer = "Tax"; }
+        else{ answer = "Nontax"; }
         return answer;
     }
 
+    String ImprtState(){
+        String answer;
+        if(this.isImport()){ answer = "Imprt"; }
+        else{ answer = "nonimprt"; }
+        return answer;
+    }
+
+    void fixImprt(){
+        if(this.isImport()){ setName("Imported " + getName()); }
+    }
 
 }
