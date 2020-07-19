@@ -6,9 +6,6 @@ public class Item extends Product {
     private int Quantity = 0;
     private boolean imported;
 
-    //This is our item class. The Item object keeps the whole application organized
-    //We are able to use this object to be able to call different options via the assigned parameters
-
     Item(){
 
     }
@@ -21,8 +18,6 @@ public class Item extends Product {
         this.imported = imprt;
     }
 
-    //I assigned each option a choice number. This made calling the Item easier for me and for the user
-    //Instead of writing the whole name you just need to input the item's assigned number and you're good to go
     @Override
     public int getChoiceNumber() {
         return choiceNumber;

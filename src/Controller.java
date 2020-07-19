@@ -1,25 +1,20 @@
 import java.util.List;
 
 public class Controller {
-    //We instantiate our variables for the controller method
-    //view will be used for user display features, menu will be used to get items available
-    //basket will be used to hold the user's items
-    private UserView view;
-    private Menu menu;
-    private Basket basket;
 
-    //This constructor allows us to pass in the variables we instantiated in the Main class
-    public Controller(UserView view, Menu menu, Basket basket){
+    private UserView view;
+    private RegularMenu regularMenu;
+    private RegularBasket regularBasket;
+
+    public Controller(UserView view, RegularMenu regularMenu, RegularBasket regularBasket){
         this.view = view;
-        this.menu = menu;
-        this.basket = basket;
+        this.regularMenu = regularMenu;
+        this.regularBasket = regularBasket;
 
     }
 
-    //run will execute program
-    public void run(){
-
-        List<Item> menu = this.menu.returnAllItems();
+    void run(){
+        List<Item> menu = this.regularMenu.returnAllMenuItems();
         while(true){
             int choice = view.menuOptions();
 
@@ -27,16 +22,17 @@ public class Controller {
                 case 1:
                     view.display(menu);
                     int item = view.getItemNumberChoice(menu.size());
-                    basket.adjustBasketState(item, this.basket, menu, this.menu);
+                    int quantity = view.getItemQuantity();
+                    regularBasket.adjustBasketState(item, quantity, this.regularBasket, menu, this.regularMenu);
                     break;
                 case 2:
-                    view.displayReceipt(basket.returnAllItems());
+                    view.displayReceipt(regularBasket.returnAllBasketItems());
                     System.exit(0);
                     break;
                 case 3:
                     try {
                         Item custom = view.addCustomItemToCart();
-                        basket.addItemToBasket(custom);
+                        regularBasket.addItemToBasket(custom);
                     } catch (Exception e) {
                         System.out.println("Try one more time. I didn't quite get that.\n");
                     }

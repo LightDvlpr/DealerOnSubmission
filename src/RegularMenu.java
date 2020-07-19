@@ -3,24 +3,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu implements ShopInterface {
+public class RegularMenu implements MenuType {
 
-    //We have textfile which will be products.txt, our Delimitter to parse through the text file
-    //menu will be the list to read the text file
-    //currentMenu will be the list to hold the current state of the menu list so that we can call it
-    //instead of calling for menu which will cause the file to be read twice
     private File textfile;
     private static final String DELIMITER = ",";
     private List<Item> menu;
 
-    Menu(File text){
+    RegularMenu(File text){
         this.textfile = text;
         this.menu = new ArrayList<>();
         readFile();
     }
 
     @Override
-    public Item getItem(int n, List<Item> list) {
+    public Item getItemFromMenu(int n, List<Item> list) {
         Item answer = null;
 
         for(Item i: list){
@@ -30,11 +26,12 @@ public class Menu implements ShopInterface {
     }
 
     @Override
-    public List<Item> returnAllItems() {
+    public List<Item> returnAllMenuItems() {
             return menu;
     }
 
-    private void readFile(){
+    @Override
+    public void readFile(){
         Scanner sc = null;
         try{
             sc = new Scanner(textfile);
@@ -42,6 +39,7 @@ public class Menu implements ShopInterface {
             System.out.println("File not found");
         }
 
+        assert sc != null;
         while(sc.hasNextLine()){
             String line = sc.nextLine();
             String[] parts = line.split(DELIMITER);
@@ -63,7 +61,8 @@ public class Menu implements ShopInterface {
         }
     }
 
-    void writeToFile(List<Item> newList) {
+    @Override
+    public void writeToFile(List<Item> newList) {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileWriter(textfile, false));
@@ -82,9 +81,10 @@ public class Menu implements ShopInterface {
         pw.close();
     }
 
-    //get the last item off the menu so that we can give the user's custom item the correct number
-    Item getLastItem(){ return menu.get(menu.size()-1); }
+    @Override
+    public Item getLastItem(){ return menu.get(menu.size()-1); }
 
-    void addToMenu(Item item){ menu.add(item); }
+    @Override
+    public void addItemToMenu(Item item){ menu.add(item); }
 
 }

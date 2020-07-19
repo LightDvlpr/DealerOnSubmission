@@ -6,12 +6,12 @@ import java.util.Scanner;
 class UserView {
 
     private Scanner sc = new Scanner(System.in);
-    private Menu menu;
+    private RegularMenu regularMenu;
     private double imprtTax = 5/100d;
     private double regTax = 10/100d;
 
-    UserView(Menu menu){
-        this.menu = menu;
+    UserView(RegularMenu regularMenu){
+        this.regularMenu = regularMenu;
     }
 
     int menuOptions(){
@@ -24,7 +24,6 @@ class UserView {
     }
 
     Item addCustomItemToCart(){
-
         String name;
         double price;
         boolean Tax;
@@ -32,26 +31,20 @@ class UserView {
         String taxOrNot;
         String imprtOrNot;
 
-        //choiceNum gets the last choicenumber that is present on the list
-        //Increments it by one so the user doesn't need to check what the last number is
-        int choiceNum = menu.getLastItem().getChoiceNumber() + 1;
+        int choiceNum = regularMenu.getLastItem().getChoiceNumber() + 1;
 
-
-        //Item name can be anything. No need to set restrictions
         do{
             System.out.println("Please enter in the name of your Item.");
             name = sc.nextLine();
         }
         while(name.isEmpty());
 
-        //We do want the user to only enter in a double value hence this do / while loop
         do{
             System.out.println("Please enter the price of your Item. It's not free! ");
             price = Double.parseDouble(sc.nextLine());
         }
         while(price <= 0 );
 
-        //We also want the user to enter in either Yes or No. Nothing else.
         do{
             System.out.println("Type Yes if your item belongs in any of the following categories - > Food, Books or Medical Supplies?");
             System.out.println("Type No otherwise \n");
@@ -61,7 +54,6 @@ class UserView {
 
         Tax = taxOrNot.equalsIgnoreCase("Yes");
 
-        //Same for import. No answer besides Yes or No.
         do{
             System.out.println("Type Yes if your item is imported. Type No if not.");
             imprtOrNot = sc.nextLine();
@@ -69,23 +61,18 @@ class UserView {
 
         imprt = imprtOrNot.equalsIgnoreCase("Yes");
 
-
-        //custom is our new Item, we assign the parameters that the user gave us
         Item custom = new Item(choiceNum, name, price, Tax, imprt);
-        //If the item was imported then custom.fixImport() will add "Imported " to the Item's name
+
         custom.fixImprt();
 
-        menu.addToMenu(custom);
+        regularMenu.addItemToMenu(custom);
 
-        //writeToFile will erase what is currently on the text file and add in our new list with the new item
-        menu.writeToFile(menu.returnAllItems());
+        regularMenu.writeToFile(regularMenu.returnAllMenuItems());
 
         System.out.println( custom.getName() + " has been added to your cart as well as our menu. Thank you!!\n");
-        //We return the item so that we can add it to the user's basket in the Controller class
         return custom;
     }
 
-    //This method will allow the user to pick the item via the assigned choice number
     int getItemNumberChoice(int max){
         int choice;
         do {
@@ -96,7 +83,17 @@ class UserView {
         return choice;
     }
 
-    //This method is what we use a means to make sure the user chooses a number within range
+    int getItemQuantity(){
+        int quantity;
+
+        do{
+            System.out.println("How much of this item would you like? Please enter a number: ");
+            quantity = Integer.parseInt(sc.nextLine());
+        }
+        while(quantity <= 0);
+        return quantity;
+    }
+
     private int readUserChoice(){
         int value;
         do {
@@ -107,7 +104,6 @@ class UserView {
         return value;
     }
 
-    //This will allow us to display the menu for the user
     void display(List<Item> menu){
         System.out.println("");
         for(Item i: menu){
@@ -118,7 +114,6 @@ class UserView {
         System.out.println();
     }
 
-    //Calculation for the user's selected Items will be performed here
     void displayReceipt(List<Item> cart){
         System.out.println("Printing your receipt\n");
         double total = 0.0;
@@ -142,7 +137,6 @@ class UserView {
         System.out.println("Your total cost is:  " + result);
     }
 
-    //SalesTax only returns a double of the SalesTax on a particular item
     private double SalesTax(Item i){
         double tax = 0.0;
 
@@ -151,7 +145,6 @@ class UserView {
         return tax;
     }
 
-    //Calculation for getting the total price for an imported item
     private double imprtTaxtotal(Item i){
         double price = i.getPrice();
         double priceAfterTax = i.getPrice() + i.getPrice() * imprtTax;
@@ -177,7 +170,6 @@ class UserView {
         return total;
     }
 
-    //Calculation for getting the total price for an item that is taxable
     private double taxTotal(Item i){
         double priceAfterTax = i.getPrice() + i.getPrice() * regTax;
         double price = i.getPrice();

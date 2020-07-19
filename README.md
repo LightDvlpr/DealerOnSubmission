@@ -12,7 +12,7 @@ extending another class.
 I created two interface. One for the Menun and one for the Shopping cart. Assuming that 
 neither will need to change or expand as often as an Item might. 
 
-The basket class extends the shopping cart interface, the MenuImplmentation extends the Menun interface. The Item object 
+The regularBasket class extends the shopping cart interface, the MenuImplmentation extends the Menun interface. The Item object 
 is what I used to parse my text file as well as user input so that all Items can be referred to more easily. 
 
 The Controller class is the heart of the code. It's execution is what allows the user to interact with the application. 
