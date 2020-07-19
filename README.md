@@ -19,7 +19,7 @@ The Controller class is the heart of the code. It's execution is what allows the
 The Userview class is built for all actions that the user may need including, but not limited to, displaying the recipet, displaying menu options etc.  
 
 
-# How to Run Options
+# How to Run 
 
 # Terminal
 In order to run the code please copy the SSH link, perform a git clone on your local machine.
