@@ -3,7 +3,7 @@
 In the following project I have created a simulation of Shopping at a Store. 
 The User is able to select from a menu, created from a text file, or input their own custom Item that they would like to purchase. 
 
-While I know this is a simple project I wanted to make sure that it was maintainbale as well as scalable. 
+While I know this is a simple project I wanted to make sure that it was maintainable as well as scalable. 
 
 I made an abstract class for Product and allowed Item to extend it. I did this so that in case we want to add 
 a different type of Item with more attributes different than regular Items then it could be done simply be creating and 
@@ -16,7 +16,7 @@ The regularBasket class extends the BasketType interface, the regularMenu extend
 is what I used to parse my text file as well as user input so that all Items can be referred to more easily. 
 
 The Controller class is the heart of the code. It's execution is what allows the user to interact with the application. 
-The Userview class is built for all actions that the user may need including, but not limited to, displaying the recipet, displaying menu options etc.  
+The Userview class is built for all actions that the user may need including, but not limited to, displaying the receipt, displaying menu options etc.  
 
 
 # How to Run 
@@ -37,10 +37,10 @@ After you do that just click play on Main.java.
 
 # Additional info
 
-The user has the privillege to enter in a new item into the Products.txt file 
+The user has the privilege to enter in a new item into the Products.txt file 
 
 (Please use the proper format)
-You will need the following parameters if you wish to enter in a value manullay 
+You will need the following parameters if you wish to enter in a value manually 
 
 choiceNumber - a number used to make selecting an item easier.
 
@@ -64,3 +64,4 @@ If the user does not wish to enter it into the text file then they may choose op
 I set up test cases for the methods in RegularBasket and RegularMenu
 
 Bear in mind that if you update the text file (i.e. change it manually or through the application) a few tests may need to be updated slightly.
+
