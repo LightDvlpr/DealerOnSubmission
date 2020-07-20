@@ -54,7 +54,7 @@ You will need the following parameters if you wish to enter in a value manually
 
 Ex of how to input manually into the textfile -> ```choiceNumber,nameOfItem,cost,taxOrNot,importedOrNot```
 
-!!!!!-> Be sure to separate items only using commas. That is my assigned `delimitter`.<-!!!!!
+Be sure to separate items only using commas. That is my assigned `delimitter`.
 
 If the user does not wish to enter it into the text file then they may choose `option 3` prompted by the code and enter it in more easily. 
 
