@@ -22,11 +22,11 @@ The Userview class is built for all actions that the user may need including, bu
 # How to Run 
 
 # Terminal
-In order to run the code please copy the SSH link, perform a git clone on your local machine.
+In order to run the code perform a git clone on your local machine.
 
-Once cloned, enter into src folder and type "javac Main.java"
+Once cloned, `cd` into `src` folder and type `javac Main.java`
 
-After the project is compiled, enter in the following command "java Main Products.txt"
+After the project is compiled, enter in the following command `java Main Products.txt`
 
 The program will then begin.
 
@@ -42,26 +42,23 @@ The user has the privilege to enter in a new item into the Products.txt file
 (Please use the proper format)
 You will need the following parameters if you wish to enter in a value manually 
 
-choiceNumber - a number used to make selecting an item easier.
+`choiceNumber - a number used to make selecting an item easier.`
 
-nameOfItem - the name of the item
+`nameOfItem - the name of the item`
 
-cost - price of the item
+`cost - price of the item`
 
-taxOrNot - simply write Tax if taxable, nontax if not
+`taxOrNot - simply write Tax if taxable, nontax if not`
 
-importedOrNot - simply write imprt if imported, nonimprt if not
+`importedOrNot - simply write imprt if imported, nonimprt if not`
 
-Ex of how to input manually into the textfile -> choiceNumber,nameOfItem,cost,taxOrNot,importedOrNot
+Ex of how to input manually into the textfile -> ```choiceNumber,nameOfItem,cost,taxOrNot,importedOrNot```
 
-!!!!!-> Be sure to separate items only using commas. That is my assigned delimitter.<-!!!!!
+!!!!!-> Be sure to separate items only using commas. That is my assigned `delimitter`.<-!!!!!
 
-If the user does not wish to enter it into the text file then they may choose option 3 prompted by the code and enter it in more easily. 
+If the user does not wish to enter it into the text file then they may choose `option 3` prompted by the code and enter it in more easily. 
 
 
 # Test cases
 
-I set up test cases for the methods in RegularBasket and RegularMenu
-
-Bear in mind that if you update the text file (i.e. change it manually or through the application) a few tests may need to be updated slightly.
-
+I set up test cases for the methods in RegularBasket and RegularMenu. 
