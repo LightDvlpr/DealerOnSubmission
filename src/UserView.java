@@ -40,7 +40,7 @@ class UserView {
             System.out.println("Please enter in the name of your Item.");
             name = sc.nextLine();
         }
-        while(name.isEmpty());
+        while(name.isBlank());
 
         do{
             System.out.println("Please enter the price of your Item. It's not free! ");
