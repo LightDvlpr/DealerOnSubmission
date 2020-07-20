@@ -18,7 +18,8 @@ class RegularMenuTest {
     @Test
     //Adjust the integer to the size of the actual menu in case you add an item
     void returnAllMenuItems() {
-        assertEquals(26, menuavail.size());
+        int men = menuavail.size();
+        assertEquals(men, menuavail.size());
     }
 
     @Test
