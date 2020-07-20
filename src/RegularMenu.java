@@ -9,7 +9,7 @@ public class RegularMenu implements MenuType {
     private File textfile;
     private static final String DELIMITER = ",";
     private List<Item> menu;
-    DecimalFormat df2 = new DecimalFormat("#.##");
+    private DecimalFormat df2 = new DecimalFormat("#.##");
 
     RegularMenu(File text){
         this.textfile = text;

@@ -24,3 +24,4 @@
 24,Imported Corn,3.92,Nontax,Imprt
 25,Imported bananas,2.99,Nontax,Imprt
 26,Imported crab,3.29,Tax,Imprt
+27,Cheese,4.93,Nontax,nonimprt

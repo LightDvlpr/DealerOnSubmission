@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RegularBasket implements BasketType{
 
-    private List<Item> bask = new ArrayList<Item>();
+    private List<Item> bask = new ArrayList<>();
     private double imprtTax = 5/100d;
     private double regTax = 10/100d;
 

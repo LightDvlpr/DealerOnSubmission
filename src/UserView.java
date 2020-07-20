@@ -101,7 +101,7 @@ class UserView {
     }
 
     //This method allows us to read what the user input
-    String readUserChoice(){
+    private String readUserChoice(){
         String value;
         do {
             System.out.print("Please Select your option's number :-> ");
@@ -113,7 +113,7 @@ class UserView {
 
     //This method will display the current menu for the user
     void displayMenu(List<Item> menu){
-        System.out.println("");
+        System.out.println();
         for(Item i: menu){
             System.out.println(i.getChoiceNumber() + " " + i.getName() + " " + i.getPrice());
         }
@@ -124,7 +124,7 @@ class UserView {
 
     //This method will be called when the user decides to check out. It will display the receipt.
     void displayReceipt(RegularBasket basket){
-        List<Item> cart = basket.returnAllBasketItems();
+        List<Item> cart = this.basket.returnAllBasketItems();
 
         System.out.println("Printing your receipt\n");
         double total = 0.0;
