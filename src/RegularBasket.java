@@ -1,16 +1,30 @@
+import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegularBasket implements BasketType{
 
     private List<Item> bask = new ArrayList<>();
-    private double imprtTax = 5/100d;
-    private double regTax = 10/100d;
+    File menu;
+
+    private String i = Double.toString(5/100d);
+    private String rT= Double.toString(10/100d);
+    private String iART = Double.toString(15/100d);
+
+    private BigDecimal importTax = new BigDecimal(i).setScale(2,RoundingMode.DOWN);
+    private BigDecimal regularTax = new BigDecimal(rT).setScale(2,RoundingMode.DOWN);
+    private BigDecimal importAndRegTax = new BigDecimal(iART).setScale(2,RoundingMode.DOWN);
+    private BigDecimal noTax = new BigDecimal(0).setScale(2,RoundingMode.DOWN);
 
     RegularBasket(){
 
+    }
+
+    RegularBasket(File menu){
+        this.menu = menu;
     }
 
     @Override
@@ -60,19 +74,55 @@ public class RegularBasket implements BasketType{
     }
 
     @Override
-    public double SalesTax(Item i) {
-        double tax = 0.0;
-
-        if(i.isImport()){ tax = (i.getPrice() * i.getQuantity()) * imprtTax; }
-        else if(i.isTaxable()){ tax = (i.getPrice() * i.getQuantity()) * regTax; }
-        return tax;
+    public double imprtandTaxtotal(Item i) {
+        return m(i, importAndRegTax);
     }
 
     @Override
     public double imprtTaxtotal(Item i) {
-        double price = i.getPrice();
-        double priceAfterTax = i.getPrice() + i.getPrice() * imprtTax;
-        return Calculate(i, price, priceAfterTax);
+        return m(i, importTax);
+    }
+
+    @Override
+    public double taxTotal(Item i) {
+        return m(i, regularTax);
+    }
+
+    @Override
+    public double nontaxTotal(Item i) {
+        return m(i,noTax);
+    }
+
+    @Override
+    public double SalesTax(Item i) {
+        double tax = 0.0;
+        double roundedTax;
+        double importedAndTaxable = importAndRegTax.doubleValue();
+        double imported = importTax.doubleValue();
+        double Taxable = regularTax.doubleValue();
+
+        if(i.isTaxable() && i.isImport()){
+            roundedTax = i.getPrice() * importedAndTaxable;
+            BigDecimal result2 =  new BigDecimal(Math.ceil(roundedTax * 20) / 20);
+            roundedTax = result2.setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+            tax = roundedTax * i.getQuantity();
+        }
+        else if(i.isImport()){
+            roundedTax = i.getPrice() * imported;
+            BigDecimal result2 =  new BigDecimal(Math.ceil(roundedTax * 20) / 20);
+            roundedTax = result2.setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+            tax = roundedTax * i.getQuantity();
+        }
+        else if(i.isTaxable()){
+            roundedTax = i.getPrice() * Taxable;
+            BigDecimal result2 =  new BigDecimal(Math.ceil(roundedTax * 20) / 20);
+            roundedTax = result2.setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+            tax = roundedTax * i.getQuantity();
+        }
+        return tax;
     }
 
     @Override
@@ -81,33 +131,34 @@ public class RegularBasket implements BasketType{
         int quantity = i.getQuantity();
         double totalPriceForItem = priceAfterTax * quantity;
 
-        BigDecimal tPFI =  new BigDecimal(Math.ceil(totalPriceForItem * 20) / 20);
-        tPFI = tPFI.setScale(2, RoundingMode.HALF_UP);
+        String solidPrice = Double.toString(totalPriceForItem);
+
+        BigDecimal totalPriceForItemCorrect = new BigDecimal(solidPrice);
+        totalPriceForItemCorrect = totalPriceForItemCorrect.setScale(2,RoundingMode.DOWN);
 
         if(quantity > 1){
             total = totalPriceForItem;
-            System.out.println(i.getName() + ": " + tPFI + " (" + quantity + " @ " + price + " )");
+            System.out.println(i.getName() + ": " + totalPriceForItemCorrect + " (" + quantity + " @ " + priceAfterTax + ")");
         }
         else{
             total = totalPriceForItem;
-            System.out.println(i.getName() + ": " + i.getPrice());
+            System.out.println(i.getName() + ": " + totalPriceForItemCorrect);
         }
         return total;
     }
 
-    @Override
-    public double taxTotal(Item i) {
-        double priceAfterTax = i.getPrice() + i.getPrice() * regTax;
+    private double m(Item i, BigDecimal Tax) {
         double price = i.getPrice();
+        double salesTax = price * Tax.doubleValue();
+
+        BigDecimal roundedTax =  new BigDecimal(Math.ceil(salesTax * 20) / 20);
+        roundedTax = roundedTax.setScale(2, RoundingMode.HALF_UP);
+
+        double priceAfterTax = new BigDecimal(roundedTax.doubleValue() + price).doubleValue();
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        priceAfterTax = Double.parseDouble(df.format(priceAfterTax));
+
         return Calculate(i, price, priceAfterTax);
     }
-
-    @Override
-    public double nontaxTotal(Item i) {
-        double priceAfterTax = i.getPrice() * 1;
-        double price = i.getPrice();
-        return Calculate(i, price, priceAfterTax);
-    }
-
-
 }

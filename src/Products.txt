@@ -1,27 +1,9 @@
-1,Jeans,12.49,Tax,nonimprt
+1,Book,12.49,Nontax,nonimprt
 2,Music CD,14.99,Tax,nonimprt
-3,laptop,0.85,Tax,nonimprt
-4,Imported box of Chocolates,45.39,Nontax,Imprt
-5,Imported bottle of Perfume,38.93,Tax,Imprt
-6,Packet of Headache pills,29.93,Nontax,Imprt
-7,Apple,2.34,Nontax,Imprt
-8,Imported Chocolate,32.29,Tax,Imprt
-9,Cherries,3.0,Nontax,nonimprt
-10,Cheese,2.0,Nontax,nonimprt
-11,macarooni,3.0,Tax,nonimprt
-12,Berries,3.99,Tax,nonimprt
-13,naples,3.0,Nontax,nonimprt
-14,Imported greenbeans,2.0,Tax,Imprt
-15,Juice,3.0,Tax,nonimprt
-16,Imported ,4.0,Tax,Imprt
-17,Cranberries,3.0,Tax,nonimprt
-18,GreenLeaves,2.39,Tax,nonimprt
-19,Sandwich,3.93,Tax,nonimprt
-20,Imported peanuts,2.93,Tax,Imprt
-21,Imported Shoes,3.92,Nontax,Imprt
-22,Imported Beans,3.92,Nontax,Imprt
-23,Imported Grapes,32.92,Nontax,Imprt
-24,Imported Corn,3.92,Nontax,Imprt
-25,Imported bananas,2.99,Nontax,Imprt
-26,Imported crab,3.29,Tax,Imprt
-27,Cheese,4.93,Nontax,nonimprt
+3,Chocolate bar,0.85,Nontax,nonimprt
+4,Imported Box of Chocolates,10.00,Nontax,imprt
+5,Imported bottle of perfume,47.50,Tax,imprt
+6,Imported bottle of perfume,27.99,Tax,imprt
+7,Bottle of perfume,18.99,Tax,nonimprt
+8,Packet of Headache Pills,9.75,Nontax,nonimprt
+9,Imported Box of Chocolates,11.25,Nontax,imprt

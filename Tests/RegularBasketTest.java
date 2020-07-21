@@ -6,17 +6,24 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 class RegularBasketTest {
 
-    File text = new File("Products.txt");
-    RegularMenu menu = new RegularMenu(text);
-    List<Item> menuavail = menu.returnAllMenuItems();
-    Item one = new Item(26, "Cream", 2.33, false, true, 1);
-    Item two = new Item(27, "cheese", 22.13, true, false, 1);
-    Item three = new Item(28, "onions", 3.33, true, false, 1);
-    Item four = new Item(29, "peppers", 8.33, false, false, 1);
-    RegularBasket basket = new RegularBasket();
+    private File text = new File("Products.txt");
+    private RegularMenu menu = new RegularMenu(text);
+    private List<Item> menuavail = menu.returnAllMenuItems();
+    private Item one = new Item(1, "Book", 12.49, false, false, 2);
+    private Item two = new Item(2, "Music CD", 14.99, true, false, 1);
+    private Item three = new Item(3, "Chocolate Bar", 0.85, false, false, 1);
+    private Item four = new Item(4, "Imported Box of Chocolates", 10.00, false, true, 1);
+    private Item five = new Item(5, "Imported Bottle of Perfume", 47.50, true, true, 1);
+    private Item six = new Item(6, "Imported Bottle of Perfume", 27.99, true, true, 1);
+    private Item seven = new Item(7, "Bottle of Perfume", 18.99, true, false, 1);
+    private Item eight = new Item(8, "Packet of Headache Pills", 9.75, false, false, 1);
+    private Item nine = new Item(9, "Imported Box of Chocolates", 11.25, false, true, 2);
+
+    private RegularBasket basket = new RegularBasket();
 
 
     @Test
@@ -33,7 +40,7 @@ class RegularBasketTest {
     @Test
     void contains() {
         basket.addItemToBasket(two);
-        assertEquals(true,basket.contains(27));
+        assertTrue(basket.contains(27));
     }
 
     @Test
@@ -44,22 +51,21 @@ class RegularBasketTest {
 
         assertEquals(2,cart.size());
 
-        basket.adjustBasketState(26,4,basket,menuavail,menu);
+        basket.adjustBasketState(2,4,basket,menuavail,menu);
 
-        assertEquals(4,basket.getItemFromBasket(26).getQuantity());
+        assertEquals(5,basket.getItemFromBasket(2).getQuantity());
     }
 
     @Test
     void addItemToBasket() {
-
         basket.addItemToBasket(two);
-        assertEquals(27,basket.getItemFromBasket(27).getChoiceNumber());
+        assertEquals(2,basket.getItemFromBasket(2).getChoiceNumber());
     }
 
     @Test
     void getItemFromBasket() {
         basket.addItemToBasket(two);
-        Item get = basket.getItemFromBasket(27);
+        Item get = basket.getItemFromBasket(2);
 
         assertEquals(two.getChoiceNumber(),get.getChoiceNumber());
     }
@@ -68,8 +74,8 @@ class RegularBasketTest {
     void salesTax() {
 
         //Test an imported Item
-        Double tax1 = basket.SalesTax(one);
-        BigDecimal expectedTax1 = new BigDecimal(.15);
+        double tax1 = basket.SalesTax(four);
+        BigDecimal expectedTax1 = new BigDecimal(.50);
         expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
 
         BigDecimal result1 =  new BigDecimal(Math.ceil(tax1 * 20) / 20);
@@ -78,8 +84,8 @@ class RegularBasketTest {
         assertEquals(expectedTax1, result1);
 
         //Test a Taxable item
-        Double tax2 = basket.SalesTax(two);
-        BigDecimal expectedTax2 = new BigDecimal(2.25);
+        double tax2 = basket.SalesTax(two);
+        BigDecimal expectedTax2 = new BigDecimal(1.50);
         expectedTax2 = expectedTax2.setScale(2, RoundingMode.HALF_UP);
 
         BigDecimal result2 =  new BigDecimal(Math.ceil(tax2 * 20) / 20);
@@ -88,7 +94,7 @@ class RegularBasketTest {
         assertEquals(expectedTax2, result2);
 
         //Test a nonTaxable Item
-        Double tax3 = basket.SalesTax(four);
+        double tax3 = basket.SalesTax(one);
         BigDecimal expectedTax3 = new BigDecimal(0);
         expectedTax3 = expectedTax3.setScale(2, RoundingMode.HALF_UP);
 
@@ -96,60 +102,59 @@ class RegularBasketTest {
         result3 = result3.setScale(2, RoundingMode.HALF_UP);
 
         assertEquals(expectedTax3, result3);
+
+        //Test an imported and Taxable Item
+        double tax4 = basket.SalesTax(six);
+        BigDecimal expectedTax4 = new BigDecimal(4.20);
+        expectedTax4 = expectedTax4.setScale(2, RoundingMode.HALF_UP);
+
+        BigDecimal result4 =  new BigDecimal(Math.ceil(tax4 * 20) / 20);
+        result4 = result4.setScale(2, RoundingMode.HALF_UP);
+
+        assertEquals(expectedTax4, result4);
     }
 
     @Test
     void imprtTaxtotal() {
-        Double tax1 = basket.imprtTaxtotal(one);
-        BigDecimal expectedTax1 = new BigDecimal(2.45);
-        expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
+        String tax1 = Double.toString(basket.imprtTaxtotal(four));
+        String expectedValue = Double.toString(10.50);
 
-        BigDecimal result1 =  new BigDecimal(Math.ceil(tax1 * 20) / 20);
-        result1 = result1.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal expectedTax1 = new BigDecimal(expectedValue).setScale(2,RoundingMode.DOWN);
+        BigDecimal result1 =  new BigDecimal(tax1).setScale(2,RoundingMode.DOWN);
 
         assertEquals(expectedTax1, result1);
     }
 
     @Test
     void calculate() {
-
-        BigDecimal pricetotal = new BigDecimal(2.45);
+        BigDecimal pricetotal = new BigDecimal(4.90);
         pricetotal = pricetotal.setScale(2, RoundingMode.HALF_UP);
 
         BigDecimal actual = new BigDecimal(basket.Calculate(one,2.33,2.45));
         actual = actual.setScale(2, RoundingMode.HALF_UP);
-
 
         assertEquals(pricetotal,actual);
     }
 
     @Test
     void taxTotal() {
+        String tax1 = Double.toString(basket.taxTotal(two));
+        String expectedValue = Double.toString(16.49);
 
-        Double tax1 = basket.imprtTaxtotal(one);
-
-        BigDecimal expectedTax1 = new BigDecimal(2.45);
-        expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
-
-        BigDecimal result1 =  new BigDecimal(Math.ceil(tax1 * 20) / 20);
-        result1 = result1.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal expectedTax1 = new BigDecimal(expectedValue).setScale(2,RoundingMode.DOWN);
+        BigDecimal result1 =  new BigDecimal(tax1).setScale(2,RoundingMode.DOWN);
 
         assertEquals(expectedTax1, result1);
-
-
     }
 
     @Test
     void nontaxTotal() {
-        double tax1 = basket.nontaxTotal(four);
+        String tax1 = Double.toString(basket.nontaxTotal(one));
+        String expectedValue = Double.toString(24.98);
 
-        BigDecimal expectedTax1 = new BigDecimal(8.35);
-        expectedTax1 = expectedTax1.setScale(2, RoundingMode.HALF_UP);
-
-        BigDecimal result1 =  new BigDecimal(Math.ceil(tax1 * 20) / 20);
-        result1 = result1.setScale(2, RoundingMode.HALF_UP);
+        BigDecimal expectedTax1 =new BigDecimal(expectedValue).setScale(2,RoundingMode.DOWN);
+        BigDecimal result1 =  new BigDecimal(tax1).setScale(2,RoundingMode.DOWN);
 
         assertEquals(expectedTax1, result1);
-
     }
 }

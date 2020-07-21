@@ -126,14 +126,16 @@ class UserView {
     void displayReceipt(RegularBasket basket){
         List<Item> cart = this.basket.returnAllBasketItems();
 
-        System.out.println("Printing your receipt\n");
         double total = 0.0;
         double totalSalesTax = 0.0;
 
         for(Item i: cart){
             totalSalesTax += basket.SalesTax(i);
 
-            if(i.isTaxable()){
+            if(i.isTaxable() && i.isImport()){
+                total += basket.imprtandTaxtotal(i);
+            }
+            else if(i.isTaxable()){
                 total += basket.taxTotal(i);
             }
             else if(i.isImport()){
@@ -144,13 +146,15 @@ class UserView {
             }
         }
 
-        BigDecimal result =  new BigDecimal(Math.ceil(total * 20) / 20);
-        result = result.setScale(2, RoundingMode.HALF_UP);
+        String solidTotal = Double.toString(total);
+
+        BigDecimal result =  new BigDecimal(solidTotal);
+        result = result.setScale(2, RoundingMode.DOWN);
 
         BigDecimal result2 =  new BigDecimal(Math.ceil(totalSalesTax * 20) / 20);
         result2 = result2.setScale(2, RoundingMode.HALF_UP);
 
         System.out.println("Sales Taxes: " + result2);
-        System.out.println("Your total cost is:  " + result);
+        System.out.println("Your total cost is: " + result);
     }
 }

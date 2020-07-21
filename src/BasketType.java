@@ -31,4 +31,6 @@ public interface BasketType {
     //Calculates the price of a general item
     double nontaxTotal(Item i);
 
+    //Calculates the price of both a taxable and imported item
+    double imprtandTaxtotal(Item i);
 }
