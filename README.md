@@ -18,6 +18,9 @@ is what I used to parse my text file as well as user input so that all Items can
 The Controller class is the heart of the code. It's execution is what allows the user to interact with the application. 
 The Userview class is built for all actions that the user may need including, but not limited to, displaying the receipt, displaying menu options etc.  
 
+One of the ways I got around identifying items as taxable or imported is by having the user input the information since there was no concrete way of making sure all items entered were in the correct category. 
+
+Any adjustments or additions can easily be made to the code to add any more features or functionality. It is structured in a modularized format to allow for easy reuse of code in different implementation. 
 
 # How to Run 
 
