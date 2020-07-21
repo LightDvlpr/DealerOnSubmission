@@ -62,3 +62,7 @@ If the user does not wish to enter it into the text file then they may choose `o
 # Test cases
 
 I set up test cases for the methods in RegularBasket and RegularMenu. 
+
+I added all the items with their names, quantities, etc in lines 16 to 24. If you run the tests you'll see that my tests return the exact answers as shown in the pdf. 
+
+You may of course adjust this accordingly or even add your own items. 
