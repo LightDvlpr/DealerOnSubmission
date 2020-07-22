@@ -36,8 +36,9 @@ This is how you can set up a clean-room environment using Docker:
 
 # After repo is downloaded
 
-```tar xf master.tar.gz
-cd ShoppingCartSimulation
+```
+tar xf master.tar.gz
+cd ShoppingCartSimulation-master/
 cd src
 javac Main.java
 java Main ../Products.txt
