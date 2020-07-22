@@ -7,4 +7,3 @@
 7,Bottle of perfume,18.99,Tax,nonimprt
 8,Packet of Headache Pills,9.75,Nontax,nonimprt
 9,Imported Box of Chocolates,11.25,Nontax,Imprt
-10,Grapes,2.24,Tax,nonimprt
