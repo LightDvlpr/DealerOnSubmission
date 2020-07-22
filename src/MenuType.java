@@ -5,7 +5,7 @@ public interface MenuType {
     //This method will retrieve an item from the current menu
     Item getItemFromMenu(int n, List<Item> list);
 
-    //This method returns us a list verision of the menu that we currently have
+    //This method returns us a list version of the menu that we currently have
     List<Item> returnAllMenuItems();
 
     //This method will add the new Item that the user may add to the menu + update the menu
