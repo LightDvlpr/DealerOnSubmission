@@ -74,7 +74,7 @@ public class RegularMenu implements MenuType {
 
         for(Item i: newList){
             assert pw != null;
-            pw.append(i.getChoiceNumber() + DELIMITER + i.getName() + DELIMITER + i.getPrice() + DELIMITER
+            pw.append(i.getChoiceNumber() + DELIMITER + i.getName() + DELIMITER + Double.parseDouble(df2.format(Double.parseDouble(i.getPrice().toString()))) + DELIMITER
                     + i.TaxState() + DELIMITER + i.ImprtState() + "\n"
             );
         }

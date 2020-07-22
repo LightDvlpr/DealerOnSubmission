@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,8 @@ class UserView {
     private Scanner sc = new Scanner(System.in);
     private RegularMenu Menu;
     private RegularBasket basket;
+    private DecimalFormat df2 = new DecimalFormat("#.##");
+
 
     UserView(RegularMenu Menu, RegularBasket basket){
         this.Menu = Menu;
@@ -44,7 +47,7 @@ class UserView {
 
         do{
             System.out.println("Please enter the price of your Item. It's not free! ");
-            price = Double.parseDouble(sc.nextLine());
+            price = Double.parseDouble(df2.format(Double.parseDouble(sc.nextLine())));
         }
         while(price <= 0 );
 

@@ -1,10 +1,10 @@
 1,Book,12.49,Nontax,nonimprt
 2,Music CD,14.99,Tax,nonimprt
 3,Chocolate bar,0.85,Nontax,nonimprt
-4,Imported Box of Chocolates,10.00,Nontax,Imprt
-5,Imported bottle of perfume,47.50,Tax,Imprt
+4,Imported Box of Chocolates,10.0,Nontax,Imprt
+5,Imported bottle of perfume,47.5,Tax,Imprt
 6,Imported bottle of perfume,27.99,Tax,Imprt
 7,Bottle of perfume,18.99,Tax,nonimprt
 8,Packet of Headache Pills,9.75,Nontax,nonimprt
 9,Imported Box of Chocolates,11.25,Nontax,Imprt
-
+10,Grapes,2.24,Tax,nonimprt
