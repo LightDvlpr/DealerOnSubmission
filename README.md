@@ -24,12 +24,16 @@ Any adjustments or additions can easily be made to the code to add any more feat
 
 # How to Run 
 
-# Terminal
-In order to run the code perform a git clone on your local machine.
+# Docker
+Open terminal and enter ```docker run --rm -it openjdk:12 bash```
 
-Once cloned, `cd` into `src` folder and type `javac Main.java`
+In the docker container run ```yum install git```
 
-After the project is compiled, enter in the following command `java Main Products.txt`
+Once git is installed run ```git clone https://github.com/LightDvlpr/ShoppingCartSimulation.git```
+
+```cd``` into the src folder
+Enter ```javac Main.java```
+Once project is compiled, enter ```java Main Products.txt```
 
 The program will then begin.
 
