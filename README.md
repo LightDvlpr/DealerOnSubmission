@@ -25,34 +25,33 @@ Any adjustments or additions can easily be made to the code to add any more feat
 # How to Run 
 
 This is how you can set up a clean-room environment using Docker:
-# From your terminal
-`docker run --rm -it openjdk:12 bash`
+
+```# From your terminal
+docker run --rm -it openjdk:12 bash
 
 # Then, inside the container
-`yum install git`
 
-`git clone https://github.com/LightDvlpr/ShoppingCartSimulation.git`
+curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz
+```
 
-# After repo is cloned
 
-`cd` into the src folder
+# After repo is downloaded
 
-Enter `javac Main.java`
-
-enter `java Main Products.txt`
-
+```tar xf master.tar.gz
+cd ShoppingCartSimulation
+cd src
+javac Main.java
+java Main ../Products.txt
+```
 The program will then begin.
 
-# IDE
-
-In order to run the application on an IDE you will need to uncomment line 8 and comment line 7 in Main.java
-After you do that just click play on Main.java.
 
 # Additional info
 
 The user has the privilege to enter in a new item into the Products.txt file 
 
 (Please use the proper format)
+
 You will need the following parameters if you wish to enter in a value manually 
 
 `choiceNumber - a number used to make selecting an item easier.`
@@ -76,6 +75,8 @@ If the user does not wish to enter it into the text file then they may choose `o
 
 I set up test cases for the methods in RegularBasket and RegularMenu. 
 
-I added all the items with their names, quantities, etc in lines 16 to 24. If you run the tests you'll see that my tests return the exact answers as shown in the pdf. 
+I added all the items with their names, quantities, etc in lines 16 to 24. 
+
+If you run the tests you'll see that my tests return the exact answers as shown in the pdf. 
 
 You may of course adjust this accordingly or even add your own items. 
