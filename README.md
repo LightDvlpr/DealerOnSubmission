@@ -26,13 +26,12 @@ Any adjustments or additions can easily be made to the code to add any more feat
 
 This is how you can set up a clean-room environment using Docker:
 
-```# From your terminal
-docker run --rm -it openjdk:12 bash
+# From your terminal
+`docker run --rm -it openjdk:12 bash`
 
 # Then, inside the container
 
-curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz
-```
+`curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz`
 
 
 # After repo is downloaded
