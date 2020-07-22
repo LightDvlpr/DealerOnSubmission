@@ -15,7 +15,7 @@ public class Main {
        UserView user = new UserView(regularMenu, Cart);
        Controller controller = new Controller(user, regularMenu, Cart);
 
-       //Lets go shopping.
+       //Lets shop.
        controller.run();
 
     }
