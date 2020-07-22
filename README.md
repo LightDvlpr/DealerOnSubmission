@@ -24,16 +24,22 @@ Any adjustments or additions can easily be made to the code to add any more feat
 
 # How to Run 
 
-# Docker
-Open terminal and enter ```docker run --rm -it openjdk:12 bash```
+This is how you can set up a clean-room environment using Docker:
+# From your terminal
+`docker run --rm -it openjdk:12 bash`
 
-In the docker container run ```yum install git```
+# Then, inside the container
+`yum install git`
 
-Once git is installed run ```git clone https://github.com/LightDvlpr/ShoppingCartSimulation.git```
+`git clone https://github.com/LightDvlpr/ShoppingCartSimulation.git`
 
-```cd``` into the src folder
-Enter ```javac Main.java```
-Once project is compiled, enter ```java Main Products.txt```
+# After repo is cloned
+
+`cd` into the src folder
+
+Enter `javac Main.java`
+
+enter `java Main Products.txt`
 
 The program will then begin.
 
