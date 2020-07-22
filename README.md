@@ -1,4 +1,4 @@
-# DealerOnSubmission -> Sales Tax
+# Sales Tax
 
 In the following project I have created a simulation of Shopping at a Store. 
 The User is able to select from a menu, created from a text file, or input their own custom Item that they would like to purchase. 
@@ -24,27 +24,23 @@ Any adjustments or additions can easily be made to the code to add any more feat
 
 # How to Run 
 
-This is how you can set up a clean-room environment using Docker:
-
-# From your terminal
-`docker run --rm -it openjdk:12 bash`
-
-# Then, inside the container
-
-`curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz`
-
-
-# After repo is downloaded
+This is how you can set up a clean-room environment using Docker from your terminal:
+It is not imperative that you use Docker. The only requirement is that you use Java 12.
 
 ```
+# From your teminal
+docker run --rm -it openjdk:12 bash
+
+#From within the container
+curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz
 tar xf master.tar.gz
 cd ShoppingCartSimulation-master/
 cd src
 javac Main.java
 java Main ../Products.txt
 ```
-The program will then begin.
 
+The program will then begin.
 
 # Additional info
 
@@ -71,7 +67,7 @@ Be sure to separate items only using commas. That is my assigned `delimitter`.
 If the user does not wish to enter it into the text file then they may choose `option 3` prompted by the code and enter it in more easily. 
 
 
-# Test cases
+# Method Test cases
 
 I set up test cases for the methods in RegularBasket and RegularMenu. 
 
