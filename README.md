@@ -26,7 +26,9 @@ Any adjustments or additions can easily be made to the code to add any more feat
 
 This is how you can set up a clean-room environment using Docker from your terminal:
 
-It is not imperative that you use Docker. 
+`brew cask install docker`
+
+It is not imperative that you install Docker. 
 
 The only requirement is that you use Java 12.
 
