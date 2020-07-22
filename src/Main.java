@@ -4,9 +4,12 @@ public class Main {
 
     public static void main(String[] args ) {
 
-//       File text = new File(args[0]);
+        if(args.length != 1) {
+            System.err.println("Usage: java Main <input text file> ");
+            return;
+        }
 
-       File text = new File("Products.txt");
+       File text = new File(args[0]);
        RegularMenu regularMenu = new RegularMenu(text);
        RegularBasket Cart = new RegularBasket();
        UserView user = new UserView(regularMenu, Cart);
