@@ -47,7 +47,7 @@ javac Main.java
 java Main ../Products.txt
 ```
 
-The program will then begin.
+
 
 # Additional info
 
