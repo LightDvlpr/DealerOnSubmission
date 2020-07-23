@@ -39,8 +39,10 @@ docker run --rm -it openjdk:12 bash
 #From within the container
 curl -LO https://github.com/LightDvlpr/ShoppingCartSimulation/archive/master.tar.gz
 tar xf master.tar.gz
-cd ShoppingCartSimulation-master/
-cd src
+
+cd ShoppingCartSimulation-master/src/
+
+# these two lines will run the program
 javac Main.java
 java Main ../Products.txt
 ```
